@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Кабинет преподавателя</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=PT+Sans+Narrow:wght@400;700&family=Russo+One&display=swap" rel="stylesheet">
+<style>
+:root{--red:#d3241b;--red-d:#9c150f;--ink:#141211;--paper:#efe3c6;--paper-d:#e0cfa6;--white:#fbf6e8;--ok:#1d6b34;
+  --display:'Russo One','Oswald','Impact',sans-serif;--head:'Oswald','Arial Narrow',sans-serif;--body:'PT Sans Narrow','Arial Narrow',Arial,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:19px;line-height:1.35;
+  background-image:radial-gradient(circle at 1px 1px,rgba(20,18,17,.10) 1px,transparent 1.5px);background-size:7px 7px}
+.band{position:fixed;left:0;top:0;bottom:0;width:26px;background:var(--red);border-right:4px solid var(--ink);z-index:0}
+.wrap{position:relative;z-index:1;max-width:1040px;margin:0 auto;padding:22px 18px 60px 50px}
+.mast{display:flex;border:4px solid var(--ink);background:var(--white);box-shadow:8px 8px 0 var(--ink);margin-bottom:22px}
+.mast .yr{background:var(--ink);color:var(--paper);font-family:var(--display);font-size:clamp(20px,4.5vw,32px);padding:10px 16px;display:flex;align-items:center}
+.mast .tt{padding:10px 16px;font-family:var(--head);font-weight:700;text-transform:uppercase;letter-spacing:.06em;display:flex;align-items:center}
+.mast .tt b{color:var(--red);margin-left:.4em}
+.card{background:var(--white);border:4px solid var(--ink);box-shadow:8px 8px 0 var(--ink);padding:18px 22px;margin-bottom:22px}
+.card h2{font-family:var(--head);text-transform:uppercase;letter-spacing:.08em;font-size:20px;margin-bottom:12px;display:inline-block;background:var(--red);color:var(--white);padding:2px 12px;transform:skewX(-8deg)}
+label{display:block;font-family:var(--head);text-transform:uppercase;letter-spacing:.08em;font-size:14px;margin:10px 0 4px}
+input[type=text],input[type=password],input[type=number],textarea{width:100%;font-family:var(--body);font-size:20px;padding:9px 11px;border:4px solid var(--ink);background:#fff;color:var(--ink);outline:none}
+input:focus,textarea:focus{border-color:var(--red)}
+textarea{height:110px;font-family:monospace;font-size:14px}
+.btn{display:inline-block;font-family:var(--display);font-size:17px;text-transform:uppercase;padding:10px 20px;border:4px solid var(--ink);background:var(--red);color:var(--white);cursor:pointer;box-shadow:5px 5px 0 var(--ink)}
+.btn:hover{transform:translate(2px,2px);box-shadow:3px 3px 0 var(--ink)}
+.btn.dark{background:var(--ink);color:var(--paper)}.btn.ghost{background:var(--white);color:var(--ink)}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:flex-end}.row>div{flex:1 1 160px}
+.err{color:var(--red-d);font-weight:700;min-height:1.3em;margin-top:6px}
+.tabs{display:flex;gap:8px;margin-bottom:18px;flex-wrap:wrap}
+.tabs button{font-family:var(--head);text-transform:uppercase;letter-spacing:.06em;font-size:16px;padding:8px 16px;border:4px solid var(--ink);background:var(--white);cursor:pointer}
+.tabs button.on{background:var(--ink);color:var(--paper)}
+.sec{display:none}.sec.on{display:block}
+.verdict{display:inline-block;font-family:var(--display);font-size:22px;padding:6px 16px;border:4px solid var(--ink);margin:8px 0}
+.verdict.ok{background:var(--ok);color:#fff}.verdict.bad{background:var(--red);color:#fff}
+.stat{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}
+.stat div{border:3px solid var(--ink);padding:6px 14px;background:var(--paper);font-family:var(--head);text-transform:uppercase;letter-spacing:.05em;font-size:14px}
+.stat b{font-size:24px;display:block}
+.stat .warn{background:var(--red);color:#fff}
+table{width:100%;border-collapse:collapse;font-size:17px;margin-top:8px}
+th,td{border:3px solid var(--ink);padding:6px 9px;text-align:left;vertical-align:top}
+th{background:var(--ink);color:var(--paper);font-family:var(--head);text-transform:uppercase;letter-spacing:.05em;font-size:14px}
+tr.wrong td{background:#f5d3cf}tr.ok td:first-child{background:#cfe7d4}
+.small{font-size:15px;opacity:.8}
+.hide{display:none}
+</style>
+</head>
+<body>
+<div class="band"></div>
+<div class="wrap">
+  <div class="mast"><div class="yr">ПРЕПОД</div><div class="tt">Кабинет проверки <b>/ 1905—1922</b></div></div>
+
+  <!-- Вход -->
+  <div id="login" class="card" style="max-width:520px">
+    <h2>Вход</h2>
+    <label for="pw">Пароль</label>
+    <input id="pw" type="password" autocomplete="off">
+    <div class="err" id="pwErr"></div>
+    <button class="btn" id="pwGo">Войти</button>
+  </div>
+
+  <!-- Кабинет -->
+  <div id="app" class="hide">
+    <div class="tabs">
+      <button class="on" data-t="t1">Строка результата</button>
+      <button data-t="t2">Быстрая проверка кода</button>
+      <button data-t="t3">Журнал</button>
+    </div>
+
+    <div id="t1" class="sec on">
+      <div class="card">
+        <h2>Разбор работы</h2>
+        <label for="rs">Вставьте строку результата студента</label>
+        <textarea id="rs"></textarea>
+        <div class="err" id="rsErr"></div>
+        <button class="btn" id="rsGo">Проверить</button>
+      </div>
+      <div id="detail"></div>
+    </div>
+
+    <div id="t2" class="sec">
+      <div class="card">
+        <h2>Проверка по коду</h2>
+        <p class="small">Для случаев, когда студент назвал только фамилию, баллы и код.</p>
+        <div class="row">
+          <div><label for="qs">Фамилия</label><input id="qs" type="text"></div>
+          <div><label for="qb">Баллы (0–40)</label><input id="qb" type="number" min="0" max="40"></div>
+          <div><label for="qc">Код (5 цифр)</label><input id="qc" type="text" maxlength="5" inputmode="numeric"></div>
+        </div>
+        <div style="margin-top:14px"><button class="btn" id="qGo">Проверить код</button></div>
+        <div id="qRes"></div>
+      </div>
+    </div>
+
+    <div id="t3" class="sec">
+      <div class="card">
+        <h2>Журнал проверенных</h2>
+        <p class="small">Хранится только в этом браузере.</p>
+        <div id="log"></div>
+        <div style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap">
+          <button class="btn dark" id="csv">Копировать как таблицу</button>
+          <button class="btn ghost" id="clr">Очистить журнал</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="data.js"></script>
+<script src="common.js"></script>
+<script>
+(function(){
+'use strict';
+var $=function(i){return document.getElementById(i)};
+var PW_HASH='1c4cef735fca668770a5c54625c247110c2e2c4c0d21e3ce269714ecd0d7f2a4';
+var bank=REV.loadBank();
+var LOGK='rev1905_teacher_log_v1';
+var letters='АБВГ';
+
+async function login(){
+  var v=$('pw').value.trim().toLowerCase().replace(/ё/g,'е');
+  var v2=$('pw').value.trim().toLowerCase();
+  var h1=await REV.sha256hex('rev-teacher|'+v2);
+  var h2=await REV.sha256hex('rev-teacher|'+v);
+  if(h1===PW_HASH||h2===PW_HASH){ $('login').classList.add('hide'); $('app').classList.remove('hide'); renderLog(); }
+  else { $('pwErr').textContent='Неверный пароль.'; }
+}
+$('pwGo').onclick=login;
+$('pw').addEventListener('keydown',function(e){ if(e.key==='Enter') login(); });
+
+document.querySelectorAll('.tabs button').forEach(function(b){
+  b.onclick=function(){
+    document.querySelectorAll('.tabs button').forEach(function(x){x.classList.toggle('on',x===b)});
+    document.querySelectorAll('.sec').forEach(function(s){s.classList.toggle('on',s.id===b.dataset.t)});
+    if(b.dataset.t==='t3') renderLog();
+  };
+});
+
+function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]}); }
+function fmt(sec){ var m=Math.floor(sec/60),s=sec%60; return (m<10?'0':'')+m+':'+(s<10?'0':'')+s; }
+
+/* --- Разбор строки --- */
+$('rsGo').onclick=function(){
+  $('rsErr').textContent=''; $('detail').innerHTML='';
+  var r;
+  try{ r=REV.unpackResult($('rs').value); if(!r||!r.sn) throw 0; }
+  catch(e){ $('rsErr').textContent='Не удалось прочитать строку. Проверьте, что она вставлена целиком.'; return; }
+
+  // пересчёт баллов по ответам
+  var re=0, rows='';
+  for(var i=0;i<40;i++){
+    var ch=r.an.charAt(i), q=bank[i];
+    var given=(ch==='-')?null:parseInt(ch,10);
+    var good=(given===q.a); if(good) re++;
+    rows+='<tr class="'+(good?'ok':'wrong')+'"><td>'+(i+1)+'</td><td>'+esc(q.q)+'</td><td>'+
+      (given===null?'<i>нет ответа</i>':esc(q.o[given]))+'</td><td>'+esc(q.o[q.a])+'</td></tr>';
+  }
+  var scoreOk=(re===r.sc);
+  var codeOk=r.codeOk&&r.integrity&&scoreOk;
+  var grade=REV.gradeFor(re,40);
+  var html='<div class="card"><h2>'+esc(r.sn)+' '+esc(r.nm)+'</h2>'+
+    '<div class="verdict '+(codeOk?'ok':'bad')+'">'+(codeOk?'✓ Код и баллы совпадают':'✗ Данные не сходятся — возможна подделка')+'</div>'+
+    '<div class="stat"><div>Баллы<b>'+re+' / 40</b></div><div>Оценка<b>'+grade+'</b></div><div>Код<b>'+esc(r.cd)+'</b></div><div>Время<b>'+fmt(r.tm)+'</b></div><div class="'+(r.ex>0?'warn':'')+'">Выходов с экрана<b>'+r.ex+'</b></div></div>'+
+    '<p class="small">Целостность строки: '+(r.integrity?'верна':'нарушена')+' · Код по фамилии и баллам: '+(r.codeOk?'верен':'не совпал')+' · Баллы по ответам: '+(scoreOk?'совпали с заявленными':'заявлено '+r.sc+', по ответам '+re)+'</p>'+
+    '<table><tr><th>№</th><th>Вопрос</th><th>Ответ студента</th><th>Верный ответ</th></tr>'+rows+'</table></div>';
+  $('detail').innerHTML=html;
+  addLog({sn:r.sn,nm:r.nm,sc:re,gr:grade,ex:r.ex,tm:r.tm,ok:codeOk,cd:r.cd});
+};
+
+/* --- Быстрая проверка --- */
+$('qGo').onclick=function(){
+  var sn=$('qs').value.trim(), sc=parseInt($('qb').value,10), cd=$('qc').value.trim();
+  var box=$('qRes');
+  if(!sn||isNaN(sc)||sc<0||sc>40||!/^\d{5}$/.test(cd)){ box.innerHTML='<div class="err">Заполните фамилию, баллы (0–40) и 5-значный код.</div>'; return; }
+  var ok=(REV.makeCode(sn,sc)===cd);
+  box.innerHTML='<div class="verdict '+(ok?'ok':'bad')+'">'+(ok?'✓ Код верный: '+esc(sn)+', '+sc+' из 40, оценка '+REV.gradeFor(sc,40):'✗ Код не соответствует фамилии и баллам')+'</div>';
+};
+
+/* --- Журнал --- */
+function getLog(){ try{ return JSON.parse(localStorage.getItem(LOGK)||'[]'); }catch(_){ return []; } }
+function setLog(a){ try{ localStorage.setItem(LOGK,JSON.stringify(a)); }catch(_){ } }
+function addLog(e){
+  var a=getLog().filter(function(x){ return !(x.sn===e.sn&&x.nm===e.nm); });
+  e.at=new Date().toLocaleString('ru-RU'); a.push(e); setLog(a);
+}
+function renderLog(){
+  var a=getLog();
+  if(!a.length){ $('log').innerHTML='<p>Пока пусто.</p>'; return; }
+  var h='<table><tr><th>Студент</th><th>Баллы</th><th>Оценка</th><th>Выходов</th><th>Время</th><th>Проверка</th></tr>';
+  a.forEach(function(x){ h+='<tr><td>'+esc(x.sn)+' '+esc(x.nm)+'</td><td>'+x.sc+'</td><td>'+x.gr+'</td><td>'+x.ex+'</td><td>'+fmt(x.tm)+'</td><td>'+(x.ok?'✓':'✗')+'</td></tr>'; });
+  $('log').innerHTML=h+'</table>';
+}
+$('csv').onclick=function(){
+  var t=getLog().map(function(x){ return [x.sn,x.nm,x.sc,x.gr,x.ex,fmt(x.tm),x.ok?'ок':'не сходится'].join('\t'); }).join('\n');
+  navigator.clipboard.writeText(t).then(function(){ $('csv').textContent='Скопировано ✓'; });
+};
+$('clr').onclick=function(){ if(confirm('Очистить журнал?')){ setLog([]); renderLog(); } };
+})();
+</script>
+</body>
+</html>
