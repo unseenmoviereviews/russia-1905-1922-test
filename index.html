@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Россия 1905–1922 · Тест</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=PT+Sans+Narrow:wght@400;700&family=Russo+One&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#d3241b; --red-d:#9c150f; --ink:#141211; --paper:#efe3c6; --paper-d:#e0cfa6; --white:#fbf6e8;
+  --display:'Russo One','Oswald','Impact',sans-serif;
+  --head:'Oswald','Arial Narrow',sans-serif;
+  --body:'PT Sans Narrow','Arial Narrow',Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{min-height:100%}
+body{
+  background:var(--paper);color:var(--ink);font-family:var(--body);font-size:20px;line-height:1.35;
+  -webkit-user-select:none;-moz-user-select:none;user-select:none;-webkit-touch-callout:none;
+  overflow-x:hidden;
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(20,18,17,.10) 1px, transparent 1.5px);
+  background-size:7px 7px;
+}
+img{-webkit-user-drag:none}
+input,textarea{-webkit-user-select:text;user-select:text}
+
+/* Конструктивистская композиция фона */
+.bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.bg .wedge{position:absolute;right:-12vw;top:-8vh;width:62vw;height:130vh;background:var(--red);
+  transform:rotate(-22deg);transform-origin:top right;opacity:.96}
+.bg .bar{position:absolute;left:-10vw;bottom:9vh;width:80vw;height:2.2vh;background:var(--ink);transform:rotate(-22deg)}
+.bg .bar.b2{bottom:14vh;height:.8vh;left:-20vw}
+.bg .disc{position:absolute;left:5vw;top:10vh;width:22vmin;height:22vmin;border-radius:50%;border:2.2vmin solid var(--ink);background:transparent}
+.bg .disc.d2{left:auto;right:9vw;top:auto;bottom:12vh;width:11vmin;height:11vmin;border:0;background:var(--ink)}
+.bg .tri{position:absolute;left:38vw;bottom:-6vh;width:0;height:0;border-left:15vmin solid transparent;border-right:15vmin solid transparent;border-bottom:26vmin solid var(--ink);opacity:.9;transform:rotate(14deg)}
+
+.wrap{position:relative;z-index:1;max-width:980px;margin:0 auto;padding:24px 18px 60px}
+.screen{display:none}.screen.on{display:block}
+
+/* Шапка */
+.mast{display:flex;align-items:stretch;gap:0;margin-bottom:22px;border:4px solid var(--ink);background:var(--white);box-shadow:8px 8px 0 var(--ink)}
+.mast .yr{background:var(--ink);color:var(--paper);font-family:var(--display);font-size:clamp(22px,5vw,38px);padding:10px 16px;display:flex;align-items:center;letter-spacing:.02em}
+.mast .tt{padding:10px 16px;font-family:var(--head);font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:clamp(14px,3vw,20px);display:flex;align-items:center}
+.mast .tt b{color:var(--red)}
+
+h1.slogan{font-family:var(--display);font-size:clamp(34px,8.5vw,84px);line-height:.95;text-transform:uppercase;margin:6px 0 18px;color:var(--ink);
+  text-shadow:4px 4px 0 var(--red)}
+h1.slogan span{display:inline-block;background:var(--ink);color:var(--paper);padding:0 .12em;text-shadow:none;transform:skewX(-6deg)}
+.sub{font-family:var(--head);font-size:clamp(16px,3.4vw,24px);text-transform:uppercase;letter-spacing:.07em;margin-bottom:22px;max-width:30ch}
+
+.card{background:var(--white);border:4px solid var(--ink);box-shadow:8px 8px 0 var(--ink);padding:20px 22px;margin-bottom:22px}
+.card h2{font-family:var(--head);text-transform:uppercase;letter-spacing:.08em;font-size:22px;margin-bottom:10px;display:inline-block;background:var(--red);color:var(--white);padding:2px 12px;transform:skewX(-8deg)}
+.rules{list-style:none;counter-reset:r}
+.rules li{counter-increment:r;position:relative;padding:6px 0 6px 46px}
+.rules li::before{content:counter(r);position:absolute;left:0;top:4px;width:34px;height:34px;background:var(--ink);color:var(--paper);font-family:var(--display);display:flex;align-items:center;justify-content:center;border-radius:50%}
+
+label{display:block;font-family:var(--head);text-transform:uppercase;letter-spacing:.08em;font-size:15px;margin:12px 0 4px}
+input[type=text]{width:100%;font-family:var(--body);font-size:22px;padding:10px 12px;border:4px solid var(--ink);background:#fff;color:var(--ink);outline:none}
+input[type=text]:focus{border-color:var(--red)}
+
+.btn{display:inline-block;font-family:var(--display);font-size:20px;text-transform:uppercase;letter-spacing:.04em;padding:12px 24px;border:4px solid var(--ink);background:var(--red);color:var(--white);cursor:pointer;box-shadow:6px 6px 0 var(--ink);transition:transform .08s, box-shadow .08s}
+.btn:hover{transform:translate(2px,2px);box-shadow:4px 4px 0 var(--ink)}
+.btn:active{transform:translate(6px,6px);box-shadow:0 0 0 var(--ink)}
+.btn.dark{background:var(--ink);color:var(--paper)}
+.btn.ghost{background:var(--white);color:var(--ink)}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+.err{color:var(--red-d);font-weight:700;margin-top:8px;min-height:1.3em}
+
+/* Тест */
+.hud{position:sticky;top:0;z-index:5;display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;background:var(--ink);color:var(--paper);padding:8px 14px;border:4px solid var(--ink);margin-bottom:14px;font-family:var(--head);text-transform:uppercase;letter-spacing:.06em;font-size:16px}
+.hud .pill{background:var(--paper);color:var(--ink);padding:2px 10px;font-weight:700}
+.hud .pill.warn{background:var(--red);color:var(--white)}
+.prog{height:14px;border:3px solid var(--ink);background:var(--white);margin-bottom:16px}
+.prog i{display:block;height:100%;width:0;background:var(--red);transition:width .25s}
+
+.qcard{position:relative;background:var(--white);border:4px solid var(--ink);box-shadow:10px 10px 0 var(--ink);padding:26px 24px 22px 88px;min-height:260px}
+.qnum{position:absolute;left:0;top:0;bottom:0;width:64px;background:var(--red);color:var(--white);font-family:var(--display);font-size:34px;display:flex;align-items:flex-start;justify-content:center;padding-top:14px;border-right:4px solid var(--ink)}
+.qch{font-family:var(--head);text-transform:uppercase;letter-spacing:.1em;font-size:14px;color:var(--red-d);margin-bottom:6px}
+.qtxt{font-family:var(--head);font-weight:500;font-size:clamp(20px,3.4vw,28px);line-height:1.2;margin-bottom:18px}
+.opts{display:grid;gap:10px}
+.opt{display:flex;gap:12px;align-items:flex-start;text-align:left;width:100%;padding:11px 14px;background:var(--paper);border:3px solid var(--ink);font-family:var(--body);font-size:21px;color:var(--ink);cursor:pointer;transition:background .1s, transform .08s}
+.opt:hover{background:var(--paper-d)}
+.opt .k{flex:none;width:30px;height:30px;background:var(--ink);color:var(--paper);font-family:var(--display);font-size:15px;display:flex;align-items:center;justify-content:center}
+.opt.sel{background:var(--red);color:var(--white);transform:translateX(6px)}
+.opt.sel .k{background:var(--white);color:var(--red)}
+
+.nav{display:flex;justify-content:space-between;gap:10px;margin-top:20px;flex-wrap:wrap}
+.grid{display:grid;grid-template-columns:repeat(10,1fr);gap:6px;margin-top:22px}
+.grid button{aspect-ratio:1;font-family:var(--head);font-weight:700;font-size:15px;border:3px solid var(--ink);background:var(--white);color:var(--ink);cursor:pointer}
+.grid button.done{background:var(--ink);color:var(--paper)}
+.grid button.cur{outline:4px solid var(--red);outline-offset:1px}
+@media(max-width:560px){.grid{grid-template-columns:repeat(8,1fr)}.qcard{padding:22px 14px 18px 62px}.qnum{width:46px;font-size:24px}}
+
+/* Результат */
+.score{font-family:var(--display);font-size:clamp(56px,16vw,140px);line-height:1;color:var(--red);text-shadow:5px 5px 0 var(--ink)}
+.score small{font-size:.35em;color:var(--ink);text-shadow:none}
+.codebox{display:inline-block;font-family:var(--display);font-size:clamp(40px,10vw,72px);letter-spacing:.18em;background:var(--ink);color:var(--paper);padding:6px 24px;border:4px solid var(--ink);box-shadow:8px 8px 0 var(--red)}
+textarea{width:100%;height:120px;font-family:monospace;font-size:14px;border:3px solid var(--ink);padding:8px;background:#fff;resize:none}
+.stat{display:flex;gap:12px;flex-wrap:wrap;margin:14px 0}
+.stat div{border:3px solid var(--ink);padding:6px 14px;background:var(--paper);font-family:var(--head);text-transform:uppercase;letter-spacing:.06em}
+.stat b{font-size:24px;display:block}
+
+/* Оверлеи */
+.ov{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(20,18,17,.94)}
+.ov.on{display:flex}
+.ov .box{max-width:560px;background:var(--red);color:var(--white);border:6px solid var(--paper);padding:26px 28px;box-shadow:12px 12px 0 var(--paper);text-align:center}
+.ov .box h3{font-family:var(--display);font-size:34px;text-transform:uppercase;margin-bottom:10px}
+.ov .box p{font-size:22px;margin-bottom:16px}
+.ov .box .btn{background:var(--ink);color:var(--paper);border-color:var(--paper);box-shadow:6px 6px 0 var(--paper)}
+
+#shield{position:fixed;inset:0;z-index:90;background:var(--ink);display:none}
+.blurred .wrap{filter:blur(18px)}
+
+@media print{body *{display:none!important}body::before{content:"Печать запрещена";display:block;font-size:40px;padding:40px}}
+</style>
+</head>
+<body>
+<div class="bg" aria-hidden="true"><div class="wedge"></div><div class="bar"></div><div class="bar b2"></div><div class="disc"></div><div class="disc d2"></div><div class="tri"></div></div>
+
+<div class="wrap">
+  <!-- Старт -->
+  <section id="s-start" class="screen on">
+    <div class="mast"><div class="yr">1905—1922</div><div class="tt">Отечественная история&nbsp;<b>/ Тест</b></div></div>
+    <h1 class="slogan">Россия <span>в огне</span><br>революций</h1>
+    <p class="sub">Сорок вопросов о тех годах, которые перевернули страну</p>
+
+    <div class="card">
+      <h2>Правила</h2>
+      <ol class="rules">
+        <li>В тесте <b>40 вопросов</b>, у каждого один верный ответ. Возвращаться к вопросам можно.</li>
+        <li>Тест открывается на весь экран. <b>Каждый выход со страницы</b> (смена вкладки, окна, выход из полноэкранного режима) фиксируется и попадёт в отчёт.</li>
+        <li>Копирование текста, печать и контекстное меню отключены.</li>
+        <li>В конце вы получите <b>5-значный код</b> и строку результата — отправьте их преподавателю.</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <h2>Участник</h2>
+      <label for="sn">Фамилия</label>
+      <input id="sn" type="text" autocomplete="off" maxlength="40">
+      <label for="nm">Имя</label>
+      <input id="nm" type="text" autocomplete="off" maxlength="40">
+      <div class="err" id="startErr"></div>
+      <div style="margin-top:14px"><button class="btn" id="btnStart">Начать тест ★</button></div>
+    </div>
+  </section>
+
+  <!-- Тест -->
+  <section id="s-quiz" class="screen">
+    <div class="hud">
+      <span>★ <span id="hWho"></span></span>
+      <span class="pill" id="hTime">00:00</span>
+      <span class="pill" id="hExit">Выходов: 0</span>
+      <span>Отвечено: <b id="hAns">0</b>/40</span>
+    </div>
+    <div class="prog"><i id="prog"></i></div>
+    <div class="qcard">
+      <div class="qnum" id="qn">1</div>
+      <div class="qch" id="qch"></div>
+      <div class="qtxt" id="qt"></div>
+      <div class="opts" id="qo"></div>
+    </div>
+    <div class="nav">
+      <button class="btn ghost" id="bPrev">← Назад</button>
+      <button class="btn dark" id="bFinish">Завершить</button>
+      <button class="btn" id="bNext">Далее →</button>
+    </div>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <!-- Результат -->
+  <section id="s-end" class="screen">
+    <div class="mast"><div class="yr">ИТОГ</div><div class="tt">Тест завершён&nbsp;<b>/ <span id="eWho"></span></b></div></div>
+    <div class="card">
+      <div class="score"><span id="eScore">0</span><small> / 40</small></div>
+      <div class="stat">
+        <div>Оценка<b id="eGrade">—</b></div>
+        <div>Время<b id="eTime">—</b></div>
+        <div>Выходов с экрана<b id="eExit">0</b></div>
+      </div>
+      <label>Ваш код</label>
+      <div class="codebox" id="eCode">00000</div>
+      <label style="margin-top:20px">Строка результата для преподавателя</label>
+      <textarea id="eStr" readonly></textarea>
+      <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn" id="bCopy">Скопировать строку</button>
+      </div>
+      <p style="margin-top:14px">Отправьте преподавателю фамилию, код и строку результата.</p>
+    </div>
+  </section>
+</div>
+
+<!-- Подтверждение завершения -->
+<div class="ov" id="ovFinish"><div class="box">
+  <h3>Завершить тест?</h3>
+  <p id="finishTxt"></p>
+  <button class="btn" id="finYes">Да, завершить</button>
+  <button class="btn" id="finNo" style="margin-left:8px">Вернуться</button>
+</div></div>
+
+<!-- Предупреждение о выходе -->
+<div class="ov" id="ovExit"><div class="box">
+  <h3>Вы покинули тест!</h3>
+  <p>Выход с экрана зафиксирован. Всего выходов: <b id="ovExitN">0</b>. Информация попадёт в отчёт преподавателя.</p>
+  <button class="btn" id="exitBack">Вернуться к тесту</button>
+</div></div>
+
+<script src="data.js"></script>
+<script src="common.js"></script>
+<script>
+(function(){
+'use strict';
+var LS = 'rev1905_session_v1';
+var $ = function(id){return document.getElementById(id)};
+
+/* ---------- Защита от копирования ---------- */
+function allowed(t){ return t && (t.id==='eStr' || t.tagName==='INPUT'); }
+['contextmenu','copy','cut','dragstart','selectstart'].forEach(function(ev){
+  document.addEventListener(ev,function(e){ if(allowed(e.target) && ev!=='contextmenu' && ev!=='dragstart') return; e.preventDefault(); });
+});
+document.addEventListener('keydown',function(e){
+  var k=(e.key||'').toLowerCase();
+  var ctrl=e.ctrlKey||e.metaKey;
+  if(e.key==='F12' || e.key==='PrintScreen' ||
+     (ctrl && ['c','x','a','u','s','p','i','j'].indexOf(k)>-1 && !allowed(e.target)) ||
+     (ctrl && e.shiftKey && ['i','j','c','s'].indexOf(k)>-1)){
+    if(e.key==='PrintScreen'){ try{navigator.clipboard.writeText('');}catch(_){ } }
+    e.preventDefault(); return false;
+  }
+},true);
+document.addEventListener('keyup',function(e){ if(e.key==='PrintScreen'){ try{navigator.clipboard.writeText('');}catch(_){ } }});
+
+/* ---------- Состояние ---------- */
+var bank = REV.loadBank();
+var S = null; // сессия
+
+function save(){ try{ localStorage.setItem(LS, JSON.stringify(S)); }catch(_){ } }
+function load(){ try{ var j=localStorage.getItem(LS); return j?JSON.parse(j):null; }catch(_){ return null; } }
+
+function rng(seed){ var a=seed>>>0; return function(){ a|=0; a=a+0x6D2B79F5|0; var t=Math.imul(a^a>>>15,1|a); t=t+Math.imul(t^t>>>7,61|t)^t; return ((t^t>>>14)>>>0)/4294967296; }; }
+function shuffle(arr, r){ for(var i=arr.length-1;i>0;i--){ var j=Math.floor(r()*(i+1)); var t=arr[i]; arr[i]=arr[j]; arr[j]=t; } return arr; }
+
+// порядок вопросов и вариантов зависит от seed сессии
+function buildOrder(seed){
+  var r = rng(seed);
+  var ids = shuffle(bank.map(function(q){return q.id;}), r);
+  var opts = {};
+  bank.forEach(function(q){ opts[q.id] = shuffle([0,1,2,3], r); });
+  return {ids:ids, opts:opts};
+}
+
+var order=null, cur=0;
+function qById(id){ return bank[id]; }
+
+/* ---------- Экраны ---------- */
+function show(id){ ['s-start','s-quiz','s-end'].forEach(function(x){ $(x).classList.toggle('on', x===id); }); window.scrollTo(0,0); }
+function fmt(sec){ var m=Math.floor(sec/60), s=sec%60; return (m<10?'0':'')+m+':'+(s<10?'0':'')+s; }
+
+/* ---------- Старт ---------- */
+$('btnStart').onclick=function(){
+  var sn=$('sn').value.trim(), nm=$('nm').value.trim();
+  if(sn.length<2 || nm.length<2){ $('startErr').textContent='Введите фамилию и имя.'; return; }
+  S={sn:sn,nm:nm,seed:(Math.random()*4294967296)>>>0,an:{},ex:0,t0:Date.now(),elapsed:0,done:false,cur:0};
+  order=buildOrder(S.seed); cur=0; save();
+  enterFs(); startQuiz();
+};
+function enterFs(){
+  var el=document.documentElement;
+  try{ var p=(el.requestFullscreen||el.webkitRequestFullscreen||el.msRequestFullscreen); if(p) p.call(el); }catch(_){ }
+}
+
+var timer=null;
+function startQuiz(){
+  order=buildOrder(S.seed);
+  $('hWho').textContent=S.sn+' '+S.nm;
+  buildGrid(); renderQ(S.cur||0); show('s-quiz');
+  updateExit();
+  if(timer) clearInterval(timer);
+  timer=setInterval(function(){ var s=Math.floor((Date.now()-S.t0)/1000); $('hTime').textContent=fmt(s); },1000);
+  active=true;
+}
+
+/* ---------- Вопросы ---------- */
+function buildGrid(){
+  var g=$('grid'); g.innerHTML='';
+  for(var i=0;i<40;i++){ (function(i){ var b=document.createElement('button'); b.textContent=i+1; b.onclick=function(){renderQ(i)}; g.appendChild(b); })(i); }
+}
+function renderQ(i){
+  cur=i; S.cur=i; save();
+  var id=order.ids[i], q=qById(id);
+  $('qn').textContent=i+1;
+  $('qch').textContent='Глава '+q.ch;
+  $('qt').textContent=q.q;
+  var box=$('qo'); box.innerHTML='';
+  order.opts[id].forEach(function(orig,pos){
+    var b=document.createElement('button'); b.className='opt'+(S.an[id]===orig?' sel':'');
+    b.innerHTML='<span class="k">'+'АБВГ'[pos]+'</span><span></span>';
+    b.lastChild.textContent=q.o[orig];
+    b.onclick=function(){ S.an[id]=orig; save(); renderQ(cur); };
+    box.appendChild(b);
+  });
+  $('bPrev').disabled=(i===0);
+  $('bNext').disabled=(i===39);
+  updateHud();
+}
+function updateHud(){
+  var n=0; for(var i=0;i<40;i++){ if(S.an[i]!==undefined) n++; }
+  $('hAns').textContent=n; $('prog').style.width=(n/40*100)+'%';
+  var bs=$('grid').children;
+  for(var j=0;j<40;j++){ var id=order.ids[j]; bs[j].className=(S.an[id]!==undefined?'done':'')+(j===cur?' cur':''); }
+}
+$('bPrev').onclick=function(){ if(cur>0) renderQ(cur-1); };
+$('bNext').onclick=function(){ if(cur<39) renderQ(cur+1); };
+document.addEventListener('keydown',function(e){
+  if(!$('s-quiz').classList.contains('on')||$('ovFinish').classList.contains('on')||$('ovExit').classList.contains('on')) return;
+  if(e.key==='ArrowRight'&&cur<39) renderQ(cur+1);
+  if(e.key==='ArrowLeft'&&cur>0) renderQ(cur-1);
+  var n={'1':0,'2':1,'3':2,'4':3}[e.key];
+  if(n!==undefined){ var id=order.ids[cur]; S.an[id]=order.opts[id][n]; save(); renderQ(cur); }
+});
+
+/* ---------- Завершение ---------- */
+$('bFinish').onclick=function(){
+  var left=0; for(var i=0;i<40;i++) if(S.an[i]===undefined) left++;
+  $('finishTxt').textContent= left? ('Без ответа осталось вопросов: '+left+'. Завершить сейчас?') : 'Все вопросы отвечены. Завершить тест?';
+  $('ovFinish').classList.add('on');
+};
+$('finNo').onclick=function(){ $('ovFinish').classList.remove('on'); };
+$('finYes').onclick=function(){ $('ovFinish').classList.remove('on'); finish(); };
+
+function finish(){
+  active=false; if(timer) clearInterval(timer);
+  S.done=true; S.elapsed=Math.floor((Date.now()-S.t0)/1000);
+  var sc=0; for(var i=0;i<40;i++){ if(S.an[i]!==undefined && S.an[i]===bank[i].a) sc++; }
+  S.sc=sc; S.str=REV.packResult({sn:S.sn,nm:S.nm,sc:sc,ex:S.ex,tm:S.elapsed,an:S.an}); save();
+  try{ if(document.fullscreenElement) document.exitFullscreen(); }catch(_){ }
+  showEnd();
+}
+function showEnd(){
+  $('eWho').textContent=S.sn+' '+S.nm;
+  $('eScore').textContent=S.sc;
+  $('eGrade').textContent=REV.gradeFor(S.sc,40);
+  $('eTime').textContent=fmt(S.elapsed);
+  $('eExit').textContent=S.ex;
+  $('eCode').textContent=REV.makeCode(S.sn,S.sc);
+  $('eStr').value=S.str;
+  show('s-end');
+}
+$('bCopy').onclick=function(){
+  var t=$('eStr'); t.select();
+  var ok=false; try{ ok=document.execCommand('copy'); }catch(_){ }
+  if(!ok && navigator.clipboard){ navigator.clipboard.writeText(t.value).then(function(){ $('bCopy').textContent='Скопировано ✓'; }); return; }
+  $('bCopy').textContent= ok?'Скопировано ✓':'Выделите строку и скопируйте вручную';
+};
+
+/* ---------- Подсчёт выходов с экрана ---------- */
+var active=false, lastExit=0;
+function updateExit(){
+  var p=$('hExit'); p.textContent='Выходов: '+S.ex; p.classList.toggle('warn', S.ex>0);
+}
+function registerExit(why){
+  if(!active || !S || S.done) return;
+  var now=Date.now();
+  if(now-lastExit<1500) return;       // один выход = одно событие, даже если сработало несколько датчиков
+  lastExit=now; S.ex++; save(); updateExit();
+  $('ovExitN').textContent=S.ex; $('ovExit').classList.add('on');
+  document.body.classList.add('blurred');
+}
+document.addEventListener('visibilitychange',function(){ if(document.hidden) registerExit('hidden'); });
+window.addEventListener('blur',function(){ registerExit('blur'); });
+document.addEventListener('fullscreenchange',function(){ if(!document.fullscreenElement) registerExit('fs'); });
+document.addEventListener('webkitfullscreenchange',function(){ if(!document.webkitFullscreenElement) registerExit('fs'); });
+$('exitBack').onclick=function(){
+  $('ovExit').classList.remove('on'); document.body.classList.remove('blurred');
+  if(!document.fullscreenElement) enterFs();
+};
+
+/* ---------- Возврат / перезагрузка ---------- */
+var prev=load();
+if(prev && prev.sn){
+  S=prev;
+  if(S.done){ showEnd(); }
+  else{
+    // обновление страницы посреди теста считается выходом
+    S.ex=(S.ex||0)+1; save();
+    $('sn').value=S.sn; $('nm').value=S.nm;
+    startQuiz(); lastExit=Date.now();
+    $('ovExitN').textContent=S.ex; $('ovExit').classList.add('on'); document.body.classList.add('blurred');
+  }
+}
+})();
+</script>
+</body>
+</html>
