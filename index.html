@@ -188,6 +188,7 @@ textarea{width:100%;height:120px;font-family:monospace;font-size:14px;border:3px
       <textarea id="eStr" readonly></textarea>
       <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
         <button class="btn" id="bCopy">Скопировать строку</button>
+        <button class="btn dark" id="bRetry">Попробовать ещё раз</button>
       </div>
       <p style="margin-top:14px">Отправьте преподавателю фамилию, код и строку результата.</p>
     </div>
@@ -350,6 +351,11 @@ function showEnd(){
   $('eStr').value=S.str;
   show('s-end');
 }
+$('bRetry').onclick=function(){
+  if(!confirm('Начать тест заново? Текущий результат будет стёрт, у вас будет новый набор вопросов.'))return;
+  try{localStorage.removeItem(LS)}catch(_){}
+  location.reload();
+};
 $('bCopy').onclick=function(){
   var t=$('eStr'); t.select();
   var ok=false; try{ ok=document.execCommand('copy'); }catch(_){ }
